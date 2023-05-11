@@ -75,6 +75,11 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
+        if currentGameState.isLose():
+            return -9999.0
+        elif currentGameState.isWin():
+            return 9999.0
+
         award_score = 0.0  # maximize award_score
         foods = newFood.asList()
         capsules = successorGameState.getCapsules()
