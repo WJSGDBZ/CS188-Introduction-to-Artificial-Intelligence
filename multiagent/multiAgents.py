@@ -346,8 +346,61 @@ def betterEvaluationFunction(currentGameState: GameState):
     DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
-    
+    if currentGameState.isLose():
+        return -9999.0
+    elif currentGameState.isWin():
+        return 9999.0
+
+    Pos = currentGameState.getPacmanPosition()
+    GhostStates = currentGameState.getGhostStates()
+    ScaredTimes = [ghostState.scaredTimer for ghostState in GhostStates]
+
+    award_score = 0.0  # maximize award_score
+    foods = currentGameState.getFood().asList()
+    capsules = currentGameState.getCapsules()
+
+    food_distance = 0
+    closest_food = sys.maxsize
+    for food in foods:
+        md = manhattanDistance(food, Pos)
+        if closest_food > md:
+            closest_food = md
+        food_distance += md
+
+    for cap in capsules:
+        md = manhattanDistance(cap, Pos)
+        if closest_food > md:
+            closest_food = md
+        food_distance += 0.1 * md  # we prefer pellets than dots
+
+    ghost_distance = 0
+    closest_ghost = sys.maxsize
+    closest_ghost_id = 0
+    ghostPos = currentGameState.getGhostPositions()
+    for i, gPos in enumerate(ghostPos):
+        md = manhattanDistance(gPos, Pos)
+        if closest_ghost > md:
+            closest_ghost = md
+            closest_ghost_id = i
+        ghost_distance += md
+
+    nFoods = len(foods) + len(capsules)
+    nGhosts = len(ghostPos)
+    # let ghost be as far as possible and food be as close as possible
+    if nFoods > 0 and nGhosts > 0:
+        award_score += (ghost_distance / nGhosts) / (food_distance / nFoods)
+    # if there have food nearby, eat it!
+    if closest_food > 0:
+        award_score += 10 / closest_food
+
+    penalty_score = 0.0  # minimize penalty_score
+
+    # stay away the closest ghost unless we have corresponding capsules
+    if 3 > closest_ghost > 0 and ScaredTimes[closest_ghost_id] == 0:
+        penalty_score += 20 / closest_ghost
+
+    return currentGameState.getScore() + sum(ScaredTimes) + award_score - penalty_score
+
 
 # Abbreviation
 better = betterEvaluationFunction
