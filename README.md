@@ -7,4 +7,8 @@ A* search (backforward value + heuristic value) to address the problem of eating
 Use logic power to give pacman planning, localization, mapping and SLAM(localization and mapping simultaneously) ability!
 
 ## lab3 Multi-Agent Search
-Use Minimax algorithm with Alpha-Beta pruning and Expectimax algorithm to cope with optimal ghost and suboptimal ghost(not always choose the best decisions e.g. random ghost) respectively.
+Use Minimax algorithm with Alpha-Beta pruning and Expectimax algorithm to cope with optimal ghost and suboptimal ghost(not always choose the best decisions e.g. random ghost) respectively. 
+
+tips: because of computational constraints, Pacman didn't compute all situation, he instead use evaluation function to evaluate limited depth terminal state. 
+<img width="1000" alt="image" src="https://github.com/WJSGDBZ/CS188-Introduction-to-Artificial-Intelligence/assets/50448108/968b0dc2-c473-442b-947d-bdf1dbce019e">
+
