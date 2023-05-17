@@ -20,7 +20,6 @@ in other word, there are multiple possible successor state from an action(i.e. t
 such problems where the world poses a degree of uncertainty are known as **nondeterministic search problem**, and can be solved with models known as **Markov decision processes**.
 
 Use value iteration algorithm to solve such MDPs problem(we prefer policy iteration than value iteration, because The convergence of policy tends to be much faster than the convergence of value)
-![img_2.png](img_2.png)
 ### Q-learning
 
 
