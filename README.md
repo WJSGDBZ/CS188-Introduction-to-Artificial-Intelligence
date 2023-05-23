@@ -22,7 +22,7 @@ such problems where the world poses a degree of uncertainty are known as **nonde
 Use value iteration algorithm to solve such MDPs problem(we prefer policy iteration than value iteration, because The convergence of policy tends to be much faster than the convergence of value)
 ![img.png](mdp.png)
 
-### Q-learning
+### Q-learning and Approximate Q-learning
 Use Q-learning and approximate Q-learning to train Pacman to get optimal policy.  
 
 On training, Pacman use Epsilon-Greedy to exploration and exploitation. by the way, Exploration function
