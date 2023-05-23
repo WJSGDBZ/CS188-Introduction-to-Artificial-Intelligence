@@ -14,11 +14,6 @@ tips: because of computational constraints, Pacman didn't compute all situation,
 
 ### [lab4 MDPs and Q-learning](https://inst.eecs.berkeley.edu/~cs188/sp23/projects/proj4/)
 ### MDPs (markov decision processes)
-Now, we'll make our model to account for another influencing factor - the dynamics of world itself !   
-in other word, there are multiple possible successor state from an action(i.e. this action has inherent uncertainty, e.g. dealing card in poker).
-
-such problems where the world poses a degree of uncertainty are known as **nondeterministic search problem**, and can be solved with models known as **Markov decision processes**.
-
 Use value iteration algorithm to solve such MDPs problem(we prefer policy iteration than value iteration, because The convergence of policy tends to be much faster than the convergence of value)
 ![img.png](mdp.png)
 
@@ -34,4 +29,4 @@ when Pacman finish train on Figure 1 and meet Figure 3, Pacman doesn't know what
 
 So maybe we can more general: Pacman only need to know this is a bad state when the ghost is very close to me and there is no exit.
 
-
+### [lab5 Ghostbusters(Bayes Nets)](https://inst.eecs.berkeley.edu/~cs188/sp23/projects/proj5/)
